@@ -1,0 +1,23 @@
+{
+  "name": "react-native-scroll-header-example",
+  "displayName": "ScrollHeader Example",
+  "expo": {
+    "name": "react-native-scroll-header-example",
+    "slug": "react-native-scroll-header-example",
+    "description": "Example app for react-native-scroll-header",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "jsEngine": "hermes",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
