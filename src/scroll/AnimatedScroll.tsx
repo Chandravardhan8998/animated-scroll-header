@@ -68,7 +68,7 @@ const ModalInfo = ({
     return (
         <>
             <Animated.View style={styles.imageContainerView}>
-                <Animated.Image
+                {!!image && <Animated.Image
                     source={image}
                     style={[
                         imageStyle,
@@ -80,7 +80,7 @@ const ModalInfo = ({
                             ],
                         },
                     ]}
-                />
+                />}
                 <Animated.View
                     style={[
                         styles.renderHeaderContainer,
