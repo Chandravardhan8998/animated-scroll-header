@@ -14,21 +14,16 @@ npm install react-native-scroll-header
 import { HeaderScrollView } from 'react-native-scroll-header';
 
 // ...
+const _renderHeaderContent = () => <View style={styles.headerContent} />;
 
 <HeaderScrollView
-  renderHeaderContent={() => (
-    <View
-      style={{
-        width: '100%',
-        height: 80,
-        backgroundColor: '#ff000050',
-      }}
-    ></View>
-  )}
+  renderHeaderContent={_renderHeaderContent}
   image={{
     uri: 'https://images.pexels.com/photos/214574/pexels-photo-214574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   }}
-></HeaderScrollView>;
+>
+  // render child here
+</HeaderScrollView>;
 ```
 
 ## Contributing
