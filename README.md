@@ -1,6 +1,6 @@
 # react-native-scroll-header
 
-Animated Header with Flatlist
+Animated Header with ScrollView
 
 ## Installation
 
