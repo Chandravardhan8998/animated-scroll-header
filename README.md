@@ -1,6 +1,6 @@
 # react-native-scroll-header
 
-Animated Header with ScrollView
+Animated Header with Image & ScrollView
 
 ## Installation
 
@@ -14,15 +14,22 @@ npm install react-native-scroll-header
 import { HeaderScrollView } from 'react-native-scroll-header';
 
 // ...
-const _renderHeaderContent = () => <View style={styles.headerContent} />;
+const _renderHeaderContent = () => (
+  <View style={styles.headerContent}>//...</View>
+);
 
+const _renderScrollHeader = () => {
+  return <View style={styles.renderScrollHeader}>//...</View>;
+};
+//...
 <HeaderScrollView
   renderHeaderContent={_renderHeaderContent}
   image={{
-    uri: 'https://images.pexels.com/photos/214574/pexels-photo-214574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    uri: headerImage,
   }}
+  renderScrollHeader={_renderScrollHeader}
 >
-  // render child here
+  //...
 </HeaderScrollView>;
 ```
 

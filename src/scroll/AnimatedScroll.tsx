@@ -23,11 +23,10 @@ type Props = {
     children: JSX.Element | JSX.Element[];
     renderHeaderContent?: () => JSX.Element | JSX.Element[];
     renderScrollHeader?: () => JSX.Element | JSX.Element[] | null;
-
 };
 const inputValue = [1, 1.5, 2];
 
-const ModalInfo = ({
+const HeaderImageScroll = ({
     children,
     image,
     containerStyle,
@@ -109,7 +108,7 @@ const ModalInfo = ({
     );
 };
 
-export default ModalInfo;
+export default HeaderImageScroll;
 
 const styles = StyleSheet.create({
     imageContainerView: {
