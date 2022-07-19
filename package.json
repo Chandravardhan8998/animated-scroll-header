@@ -34,7 +34,11 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "image",
+    "scrollview",
+    "animated",
+    "header"
   ],
   "repository": "https://github.com/Chandravardhan8998/animated-scroll-header.git",
   "author": "Chandravardhan8998 <chandravardhansingh2@gmail.com> (https://www.npmjs.com/~the_cvs)",
