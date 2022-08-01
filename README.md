@@ -8,6 +8,10 @@ Animated Header with Image & ScrollView
 npm install react-native-scroll-header
 ```
 
+### [examples/src](https://github.com/Chandravardhan8998/animated-scroll-heade/blob/master/example/src)
+
+![](https://i.imgur.com/YFqu4Ia.gif=200x)
+
 ## Usage
 
 ```js
@@ -15,23 +19,33 @@ import { HeaderScrollView } from 'react-native-scroll-header';
 
 // ...
 const _renderHeaderContent = () => (
-  <View style={styles.headerContent}>//...</View>
+  <View style={styles.headerContent}>{/*child here*/}</View>
 );
 
 const _renderScrollHeader = () => {
-  return <View style={styles.renderScrollHeader}>//...</View>;
+  return <View style={styles.renderHeader}>{/*child here*/}</View>;
 };
 //...
 <HeaderScrollView
-  renderHeaderContent={_renderHeaderContent}
+  renderImageItem={_renderHeaderContent}
   image={{
     uri: headerImage,
   }}
-  renderScrollHeader={_renderScrollHeader}
+  renderHeader={_renderScrollHeader}
 >
   //...
 </HeaderScrollView>;
 ```
+
+## Props
+
+| Prop            | Type               | Required | Description                                                 |
+| --------------- | ------------------ | -------- | ----------------------------------------------------------- |
+| image           | `image` or `uri`   | true     | image to render over header                                 |
+| imageStyle      | image style object | false    | style object for image                                      |
+| containerStyle  | image style object | false    | style object for render header container                    |
+| renderImageItem | function           | false    | render item over header image                               |
+| renderHeader    | function           | false    | render header over scrollview with animated sticky behavior |
 
 ## Contributing
 

@@ -13,20 +13,37 @@ import {
     ScrollViewProps,
     SafeAreaView,
     StatusBar,
+    ScrollView,
 } from 'react-native';
 
 const { width } = Dimensions.get('window');
 type Props = {
     image: ImageSourcePropType;
+    /**
+     * @type imageStyle
+     * @description styling object for header image 
+     **/
     imageStyle?: ImageStyle;
+    /**
+     * @type imageStyle
+     * @description styling object for header image 
+     **/
     containerStyle?: ViewStyle;
     children: JSX.Element | JSX.Element[];
-    renderHeaderContent?: () => JSX.Element | JSX.Element[];
-    renderScrollHeader?: () => JSX.Element | JSX.Element[] | null;
+    /**
+     * @type renderImageItem
+     * @description render animated image description which will have default slide down/up animation 
+     **/
+    renderImageItem?: () => JSX.Element | JSX.Element[];
+    /**
+     * @type renderHeader
+     * @description render header item for scrollview 
+     **/
+    renderHeader?: () => JSX.Element | JSX.Element[] | null;
 };
 const inputValue = [1, 1.5, 2];
 
-const HeaderImageScroll = ({
+const HeaderImageScroll = React.forwardRef<ScrollView, Props & ScrollViewProps>(({
     children,
     image,
     containerStyle,
@@ -35,10 +52,10 @@ const HeaderImageScroll = ({
         width,
         resizeMode: 'cover',
     },
-    renderHeaderContent = () => <></>,
-    renderScrollHeader = () => null,
+    renderImageItem = () => <></>,
+    renderHeader = () => null,
     ...props
-}: Props & ScrollViewProps) => {
+}, ref) => {
     const animatedValue = new Animated.Value(1);
     const headerRef = useRef<View>()
     console.log(animatedValue);
@@ -55,10 +72,9 @@ const HeaderImageScroll = ({
     });
     const gravityDown = animatedValue.interpolate({
         inputRange: [1, 1.1],
-        outputRange: [1, 100],
+        outputRange: [5, 100],
         extrapolate: "clamp"
     });
-    let scrollViewRef = useRef();
     const _onScrollHandler = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
         const scrollYPositionByWidth = e.nativeEvent.contentOffset.y / width + 1
         if (scrollYPositionByWidth < 3) {
@@ -68,7 +84,7 @@ const HeaderImageScroll = ({
         }
     };
     const animatedHeaderStyleMemo = useMemo(() => animatedHeaderStyle(borderRadiusValue, containerStyle), [borderRadiusValue, containerStyle])
-    const allowStickyHeader = useMemo(() => renderScrollHeader() ? [1] : undefined, [renderScrollHeader])
+    const allowStickyHeader = useMemo(() => renderHeader() ? [1] : undefined, [renderHeader])
     const gravityDownHeaderStyleMemo = useMemo(() => gravityDownHeaderStyle(gravityDown), [gravityDown])
     const mainHeaderImageStyleMemo = useMemo(() => mainHeaderImageStyle(imageStyle, imageScale), [imageStyle, imageScale])
     return (
@@ -83,30 +99,30 @@ const HeaderImageScroll = ({
                 <Animated.View
                     style={gravityDownHeaderStyleMemo}
                 >
-                    {renderHeaderContent()}
+                    {renderImageItem()}
                 </Animated.View>
             </Animated.View>
             }
             <Animated.ScrollView
                 bounces={false}
-                ref={scrollViewRef}
+                ref={ref}
                 snapToInterval={width}
                 onScroll={_onScrollHandler}
                 stickyHeaderIndices={allowStickyHeader}
                 {...props}
             >
                 {!!image && <View style={styles.scrollViewTopBox} />}
-                {renderScrollHeader() && <Animated.View
+                {renderHeader() && <Animated.View
                     ref={headerRef}
                     style={animatedHeaderStyleMemo}
                 >
-                    {renderScrollHeader()}
+                    {renderHeader()}
                 </Animated.View>}
                 <View style={containerStyle}>{children}</View>
             </Animated.ScrollView>
         </SafeAreaView>
     );
-};
+});
 
 export default HeaderImageScroll;
 
