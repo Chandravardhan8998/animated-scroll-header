@@ -78,8 +78,6 @@ const HeaderImageScroll = React.forwardRef<ScrollView, Props & ScrollViewProps>(
     const _onScrollHandler = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
         const scrollYPositionByWidth = e.nativeEvent.contentOffset.y / width + 1
         if (scrollYPositionByWidth < 3) {
-            if (scrollYPositionByWidth > 2) {
-            }
             animatedValue.setValue(scrollYPositionByWidth);
         }
     };
