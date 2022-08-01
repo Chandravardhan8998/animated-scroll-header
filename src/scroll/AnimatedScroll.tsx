@@ -25,8 +25,8 @@ type Props = {
      **/
     imageStyle?: ImageStyle;
     /**
-     * @type imageStyle
-     * @description styling object for header image 
+     * @type containerStyle
+     * @description styling object for renderHeader container 
      **/
     containerStyle?: ViewStyle;
     children: JSX.Element | JSX.Element[];

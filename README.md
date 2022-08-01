@@ -10,7 +10,7 @@ npm install react-native-scroll-header
 
 ### [examples/src](https://github.com/Chandravardhan8998/animated-scroll-heade/blob/master/example/src)
 
-![](https://i.imgur.com/YFqu4Ia.gif=200x)
+![](https://github.com/Chandravardhan8998/animated-scroll-header/blob/master/example/example.gif?raw=true)
 
 ## Usage
 
